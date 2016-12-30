@@ -5,7 +5,7 @@ import java.security.NoSuchAlgorithmException;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
-public class MD5Demo {
+public class MD5Coder {
 
 	public static void main(String[] args) {
 
