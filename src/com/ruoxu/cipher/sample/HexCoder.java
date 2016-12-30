@@ -1,7 +1,5 @@
 package com.ruoxu.cipher.sample;
 
-import org.apache.commons.codec.DecoderException;
-
 public class HexCoder {
 
 	public static void main(String[] args) {
@@ -26,7 +24,7 @@ public class HexCoder {
 			data = new String(array, "UTF-8").toCharArray();
 			int len = data.length;
 	        if ((len & 0x01) != 0) {
-	            throw new DecoderException("Odd number of characters.");
+	            throw new RuntimeException("Odd number of characters.");
 	        }
 
 	        byte[] out = new byte[len >> 1];
@@ -64,10 +62,10 @@ public class HexCoder {
 	}
 
 	
-    protected static int toDigit(char ch, int index) throws DecoderException {
+    protected static int toDigit(char ch, int index)  {
         int digit = Character.digit(ch, 16);
         if (digit == -1) {
-            throw new DecoderException("Illegal hexadecimal charcter " + ch + " at index " + index);
+            throw new RuntimeException("Illegal hexadecimal charcter " + ch + " at index " + index);
         }
         return digit;
     }
