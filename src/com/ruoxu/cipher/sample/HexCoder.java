@@ -1,5 +1,12 @@
 package com.ruoxu.cipher.sample;
 
+
+/**
+ * @author wangli
+ * @blog https://wangli0.github.io
+ * <h1>二进制与十六进制转换</h1>
+ */
+
 public class HexCoder {
 
 	public static void main(String[] args) {

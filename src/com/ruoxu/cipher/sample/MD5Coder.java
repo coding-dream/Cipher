@@ -5,6 +5,12 @@ import java.security.NoSuchAlgorithmException;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
+/**
+ * @author wangli
+ * @blog https://wangli0.github.io
+ * <h1>MD5消息摘要算法</h1>
+ */
+
 public class MD5Coder {
 
 	public static void main(String[] args) {

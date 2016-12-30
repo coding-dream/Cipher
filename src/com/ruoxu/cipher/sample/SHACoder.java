@@ -3,6 +3,13 @@ package com.ruoxu.cipher.sample;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+
+/**
+ * @author wangli
+ * @blog https://wangli0.github.io
+ * <h1>SHA消息摘要算法</h1>
+ */
+
 public class SHACoder {
 
 	public static void main(String[] args) {
