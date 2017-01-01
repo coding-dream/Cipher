@@ -6,31 +6,30 @@ import java.security.NoSuchAlgorithmException;
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.DESedeKeySpec;
+import javax.crypto.spec.SecretKeySpec;
 
 import org.apache.commons.codec.binary.Base64;
 
 /**
  * @author wangli
  * @blog https://wangli0.github.io
- * <h1>对称加密算法3重DES   DESede</h1>
- * 注意: 此代码和DES算法几乎没有区别
- * 区别主要为 1.秘钥长度 2.算法名称 3.getKey中的秘钥材料类
+ * <h1>对称加密算法AES</h1>
+ * 和DES区别
+ * 1.秘钥长度 2.算法名称 3.秘钥材料(通用型)
  * 
  */
 
-public class DESedeCoder {
-	private static String KEY_ALGORITHM= "DESede";// 秘钥Key的生成算法,JDK仅支持56位秘钥
+public class AESCoder {
+	private static String KEY_ALGORITHM= "AES";// 秘钥Key的生成算法,JDK仅支持56位秘钥
 	/**
-	 * CIPHER_ALGORITHM 如果简写为 "DESede",则按默认工作模式和填充方式 
+	 * CIPHER_ALGORITHM 如果简写为 "AES",则按默认工作模式和填充方式 
 	 * JDK支持的工作模式和填充方式有:
 	 * 
 	 * 工作模式: ECB,CBC,PCBC,CTR,CTS,CFB,CFB8~CFB128,OFB,OFB8~OFB128
 	 * 填充方式: NoPadding,PKCS5Padding,ISO10126Padding
 	 * 注意，上面的也不能随意搭配
 	 */
-	private static String CIPHER_ALGORITHM= "DESede/ECB/PKCS5Padding";// 加密和解密算法/工作模式/填充方式 .
+	private static String CIPHER_ALGORITHM= "AES/ECB/PKCS5Padding";// 加密和解密算法/工作模式/填充方式 .
 	
 	public static void main(String[] args) {
 		String str = "hello world";
@@ -59,8 +58,8 @@ public class DESedeCoder {
 		try {
 
 			KeyGenerator generator = KeyGenerator.getInstance(KEY_ALGORITHM);
-			generator.init(168);//JDK仅支持112和 168位
-//			generator.init(new SecureRandom());//以默认长度初始化,因为JDK仅仅支持112和168位，故同上
+			generator.init(128);//JDK仅支持128,192,256位,其中 192,256需要无政策限制权限文件，否则不支持
+//			generator.init(new SecureRandom());//以默认长度初始化,因为JDK仅仅支持128.192,256位，故同上
 			
 			SecretKey secretKey = generator.generateKey();
 			return secretKey.getEncoded();
@@ -76,11 +75,8 @@ public class DESedeCoder {
 			SecretKey secretKey = null;
 			try {
 				//实例化DES秘钥材料
-				DESedeKeySpec dks = new DESedeKeySpec(key);
+				secretKey = new SecretKeySpec(key,KEY_ALGORITHM);
 				//实例化秘钥工厂
-				SecretKeyFactory keyFactory = SecretKeyFactory.getInstance(KEY_ALGORITHM);
-				//生成秘钥
-				secretKey = keyFactory.generateSecret(dks);
 				
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -125,6 +121,10 @@ public class DESedeCoder {
 		
 		return decryptData;
 	}
+	
+	
+	
+	
 	
 	
 }
