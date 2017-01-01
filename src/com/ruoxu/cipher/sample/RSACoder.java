@@ -16,6 +16,8 @@ import org.apache.commons.codec.binary.Base64;
  * @author wangli
  * @blog https://wangli0.github.io
  * 非对称加密算法RSA 
+ * 非对称加密的效率较低，故非对称加密算法常用来加密少量数据  如:对称加密算法的秘钥， 真正数据的加密使用 对称加密算法
+ * 而公钥和私钥的服务器端或客户端保存的时候一般使用Base64编码或者Hex编码，Hex编码的长度要小于Base64(推荐Hex保存) 
  * 
  */
 public class RSACoder {
