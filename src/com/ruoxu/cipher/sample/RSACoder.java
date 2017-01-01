@@ -25,7 +25,7 @@ public class RSACoder {
 	//秘钥算法 -->秘钥生成的算法
 	private static final String KEY_ALGORITHM = "RSA";
 	
-	private static final int KEY_SIZE = 512; //RSA秘钥长度，默认1024位，范围512~65536之间，必须是64的倍数
+	private static final int KEY_SIZE = 512; //RSA密钥长度，默认1024位，范围512~65536之间，必须是64的倍数
 	
 	public static void main(String[] args) {
 		
